@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bonsai/1741/schema/municipality.schema.json",
+  "title": "Municipality skeleton record",
+  "type": "object",
+  "required": [
+    "municipality_code",
+    "name",
+    "prefecture",
+    "municipality_type",
+    "official_site_url",
+    "source_ids",
+    "research_status",
+    "created_at"
+  ],
+  "properties": {
+    "municipality_code": {
+      "type": "string",
+      "pattern": "^[0-9]{6}$",
+      "description": "全国地方公共団体コード。先頭ゼロを保持する文字列。"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prefecture": {
+      "type": "string",
+      "minLength": 1
+    },
+    "municipality_type": {
+      "enum": [
+        "city",
+        "town",
+        "village",
+        "special_ward",
+        "other"
+      ]
+    },
+    "official_site_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "research_status": {
+      "enum": [
+        "skeleton",
+        "candidate_found",
+        "verified",
+        "needs_review",
+        "inactive"
+      ]
+    },
+    "as_of_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
