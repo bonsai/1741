@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Municipality official site candidate",
+  "type": "object",
+  "required": [
+    "candidate_id",
+    "prefecture",
+    "municipality_name",
+    "official_site_url",
+    "source_url",
+    "retrieved_at",
+    "verification_status"
+  ],
+  "properties": {
+    "candidate_id": {
+      "type": "string"
+    },
+    "prefecture": {
+      "type": "string"
+    },
+    "municipality_name": {
+      "type": "string"
+    },
+    "municipality_type": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "city",
+        "town",
+        "village",
+        "special_ward",
+        "designated_city_ward",
+        null
+      ]
+    },
+    "official_site_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "catchphrase": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_id": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "retrieved_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "unverified",
+        "http_ok",
+        "manual_verified",
+        "needs_review"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
