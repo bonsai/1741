@@ -48,19 +48,13 @@ for prefecture, page_url in prefecture_pages.items():
             href = urljoin(page_url, a["href"])
             host = urlparse(href).netloc.lower()
             # Skip empty labels, non-http links, and links back into J-LIS.
-            if not name or not href.startswith("http") or host.endswith("j-lis.go.jp"):
-                continue
-            # Retain only links that look like public-sector websites.
-            if not (host.endswith(".lg.jp") or ".lg.jp." in host or
-                    host.endswith(".go.jp") or "city." in host or
-                    "town." in host or "vill." in host or
-                    "pref." in host):
+            if not name or not re.search(r"(市|町|村|区)$", name) or not href.startswith("http") or host.endswith("j-lis.go.jp"):
                 continue
             records.append({
                 "candidate_id": f"jlis-{len(records)+1:05d}",
                 "prefecture": prefecture,
                 "municipality_name": name,
-                "municipality_type": None,
+                "municipality_type": ("special_ward" if prefecture == "東京都" and name.endswith("区") else "designated_city_ward" if name.endswith("区") else "city" if name.endswith("市") else "town" if name.endswith("町") else "village"),
                 "official_site_url": href,
                 "catchphrase": None,
                 "source_id": "src-jlis-map",
@@ -83,7 +77,7 @@ records = list(unique.values())
 output_path = "/content/municipality_sites_candidates.jsonl"
 with open(output_path, "w", encoding="utf-8") as f:
     for row in records:
-        f.write(json.dumps(row, ensure_ascii=False) + "\\n")
+        f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 print("Candidate rows:", len(records))
 print("Saved:", output_path)
