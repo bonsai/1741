@@ -16,6 +16,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("csv_path")
@@ -35,14 +36,14 @@ def main():
         if missing:
             raise SystemExit(f"CSV columns missing: {missing}; available={reader.fieldnames}")
         for line_no, row in enumerate(reader, start=2):
-            code = re.sub(r"\\D", "", (row.get(args.code_column) or "").strip())
+            code = re.sub(r"\D", "", (row.get(args.code_column) or "").strip())
             name = (row.get(args.name_column) or "").strip()
             prefecture = (row.get(args.prefecture_column) or "").strip()
             if not code or not name or not prefecture:
                 continue
             if len(code) == 5:
                 code = "0" + code
-            if not re.fullmatch(r"\\d{6}", code):
+            if not re.fullmatch(r"\d{6}", code):
                 raise SystemExit(f"Invalid municipality code at CSV line {line_no}: {code!r}")
             kind = "special_ward" if prefecture == "東京都" and name.endswith("区") else "city" if name.endswith("市") else "town" if name.endswith("町") else "village" if name.endswith("村") else "other"
             record = {
@@ -58,7 +59,7 @@ def main():
                 "updated_at": None,
                 "notes": "自治体コード・名称の基礎レコード。公式サイト等は別データとのJOINで追加する。"
             }
-            if code in rows and rows[code] != record:
+            if code in rows:
                 raise SystemExit(f"Duplicate municipality code: {code}")
             rows[code] = record
 
@@ -67,10 +68,11 @@ def main():
 
     out = Path(args.output)
     out.parent.mkdir(parents=True, exist_ok=True)
-    with out.open("w", encoding="utf-8", newline="\\n") as f:
+    with out.open("w", encoding="utf-8", newline="\n") as f:
         for code in sorted(rows):
-            f.write(json.dumps(rows[code], ensure_ascii=False) + "\\n")
+            f.write(json.dumps(rows[code], ensure_ascii=False) + "\n")
     print(f"Wrote {len(rows)} municipality skeleton records to {out}")
+
 
 if __name__ == "__main__":
     main()
