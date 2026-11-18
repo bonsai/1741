@@ -29,6 +29,7 @@
 - `schemas/cultural_resource.schema.json`: 文化資源のJSON Schema
 - `schemas/cultural_relation.schema.json`: 主体・資源・地域の関係のJSON Schema
 - `schemas/cultural_activity.schema.json`: 文化活動のJSON Schema
+- `schemas/cultural_assessment.schema.json`: 文化関連評価記録のJSON Schema
 - `schemas/indicator.schema.json`: 評価・分析指標の定義スキーマ
 - `schemas/observation.schema.json`: 地域ごとの観測値スキーマ
 - `indicators/indicators.jsonl`: 実践編の統計・地域指標カタログ
