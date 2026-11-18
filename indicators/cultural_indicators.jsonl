@@ -1,0 +1,5 @@
+{"indicator_id":"cultural_network_diversity","name":"文化資源の関与主体の多様性","dimension":"ecosystem","description":"文化資源ごとに確認できた主体の種類・数・役割を記録する。主体数の多さ自体を無条件に高評価としない。","measurement":"stakeholder_types_and_roles","status":"candidate"}
+{"indicator_id":"preservation_continuity","name":"保存・継承の継続性","dimension":"preservation","description":"保存活動、後継者育成、定期的な稽古・公演、用具整備等の継続状況を根拠付きで確認する。","measurement":"evidence_checklist","status":"candidate"}
+{"indicator_id":"public_support","name":"公的支援・制度的支援","dimension":"support","description":"自治体・都道府県・国等による予算、補助、計画、担当体制、施設提供等を確認する。公的支援は支援主体の一つとして扱う。","measurement":"evidence_checklist","status":"candidate"}
+{"indicator_id":"tourism_utilization","name":"観光資源としての活用度","dimension":"tourism","description":"観光公式情報、鑑賞・体験機会、旅行商品、交通・宿泊連携、多言語案内、地域経済との接続を確認する。","measurement":"evidence_checklist","status":"candidate"}
+{"indicator_id":"cultural_development","name":"展開・発信度","dimension":"development","description":"学校連携、地域外公演、海外発信、映像・音源アーカイブ、デジタル発信等の展開を確認する。","measurement":"evidence_checklist","status":"candidate"}
