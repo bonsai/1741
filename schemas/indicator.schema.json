@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bonsai/1919/blob/main/schemas/indicator.schema.json",
+  "title": "Indicator",
+  "description": "自治体・地域を比較するための指標定義。観測値や評価点とは分離する。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["indicator_id","domain","name","unit","measurement_type","geographic_level","source_ids"],
+  "properties": {
+    "indicator_id": {"type":"string","pattern":"^[a-z0-9][a-z0-9_-]+$"},
+    "domain": {"type":"string"},
+    "name": {"type":"string","minLength":1},
+    "description": {"type":"string"},
+    "unit": {"type":"string"},
+    "measurement_type": {"enum":["count","ratio","rate","index","checklist","ordinal","textual_evidence"]},
+    "formula": {"type":["string","null"]},
+    "geographic_level": {"type":"array","items":{"type":"string"},"minItems":1},
+    "periodicity": {"type":["string","null"]},
+    "comparison_direction": {"enum":["higher","lower","neutral","context_dependent","not_scored"]},
+    "source_ids": {"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true},
+    "caveats": {"type":"array","items":{"type":"string"}},
+    "status": {"enum":["candidate","active","deprecated"]}
+  }
+}
