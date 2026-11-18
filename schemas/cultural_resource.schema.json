@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bonsai/1919/blob/main/schemas/cultural_resource.schema.json",
+  "title": "Cultural Resource",
+  "description": "民謡・民舞・祭り・伝統行事等の文化資源。自治体に従属させず独立して管理する。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["resource_id", "name", "resource_types", "record_status", "source_ids"],
+  "properties": {
+    "resource_id": {"type": "string", "minLength": 1},
+    "name": {"type": "string", "minLength": 1},
+    "alternate_names": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "resource_types": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["folk_song", "folk_dance", "festival", "ritual", "folk_performing_art", "traditional_event", "other"]}},
+    "heritage_designations": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["scheme", "status"], "properties": {"scheme": {"enum": ["unesco_intangible_cultural_heritage", "national_important_intangible_folk_cultural_property", "prefectural_designation", "municipal_designation", "other"]}, "status": {"enum": ["designated", "registered", "candidate", "not_designated", "unknown"]}, "designation_name": {"type": ["string", "null"]}, "authority": {"type": ["string", "null"]}, "year": {"type": ["integer", "null"]}}}},
+    "record_status": {"enum": ["active", "inactive", "historical", "unknown", "needs_review"]},
+    "source_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+    "notes": {"type": ["string", "null"]}
+  }
+}
