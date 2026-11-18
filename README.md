@@ -38,6 +38,8 @@
 - `indicators/cultural_indicators.jsonl`: 文化エコシステムの評価軸カタログ
 - `indicators/cultural_administration_indicators.jsonl`: 文化行政の評価軸カタログ
 - `frameworks/cultural_administration.md`: 文化行政評価フレームワーク
+- `frameworks/cultural_entity_model.md`: 曲・団体・イベント・委員会等のID付きエンティティモデル
+- `visualizations/cultural-ecosystem.md`: 文化エコシステムの可視化仕様
 - `observations/observations.jsonl`: 収集した統計観測値（初期状態は空）
 - `research/methodology.md`: 母集団・コード・履歴・文化エコシステム・指標分析の扱い
 
@@ -47,8 +49,18 @@
 - `records/cultural-resources/{resource_id}/README.md`: 文化資源ごとの基本情報・関連レコード
 - `records/cultural-resources/{resource_id}/survey.md`: サーベイ・調査ログ・評価領域別の確認状況
 - `records/cultural-resources/{resource_id}/translations/`: 現代語訳・翻案・多言語訳
+- `records/organizations/{organization_id}/`: 保存会・演奏団体・NPO・企業等
+- `records/committees/{committee_id}/`: 実行委員会等
+- `records/events/{event_id}/`: イベントシリーズ・開催回
+- `records/people/{person_id}/`: 作者・伝承者・演者等（公開方針に配慮）
+- `records/places/{place_id}/`: 会場・文化施設・記念物等
+- `records/activities/{activity_id}/`: 保存・教育・記録等の活動
 
 初期登録と調査の蓄積はMarkdownを正本として開始する。項目・ID・関係モデルが安定した段階で、必要な情報をJSONLへ構造化する。MarkdownとJSONLの二重管理を避けるため、移行時にはどちらを正本とするか明記する。フォルダ名には不変のレコードIDを使い、名称変更があってもパスを変えない。
+
+## 文化エンティティと可視化
+
+曲・文化資源、団体、実行委員会、イベント、自治体、個人、場所、活動を独立IDで管理し、多対多の関係で接続する。ひとつの団体が複数の曲を扱い、ひとつのイベントに複数の団体・曲が参加し、ひとつの委員会が複数のイベントを運営できる。新民謡・Neo民謡・翻案も文化資源として登録し、原曲・派生作品の関係を記録する。詳細は `frameworks/cultural_entity_model.md` と `visualizations/cultural-ecosystem.md` を参照。
 
 ## 文化行政評価基盤
 
@@ -96,6 +108,7 @@ e-Statの市区町村検索で使われる標準地域コードは5桁です。�
 
 ## devhistory
 
+- **2026-11-19**: 曲・団体・実行委員会・イベント・個人・場所・活動を独立IDで管理するエンティティモデルと可視化仕様を追加。新民謡・Neo民謡・翻案を分類し、団体・イベント・曲の多対多関係と派生関係を表現可能にした。
 - **2026-11-19**: 個別レコードをID単位のフォルダで管理するMarkdown先行運用を追加。熊本県・熊本市を別自治体レコードとして、おてもやんを独立文化資源として初期登録。サーベイとギャル語翻案を個別ファイルに分離。
 - **2026-11-19**: 1919を文化行政評価基盤として位置付け、ガバナンス、予算・人材、保存継承、文化参加・アクセス、創造・発表、観光・地域経済、デジタル化、多主体協働、政策評価・改善の評価フレームワークと指標候補を追加。行政の投入・活動・産出・成果・長期的影響を分け、行政の寄与と地域主体の活動を区別する。
 
