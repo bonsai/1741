@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bonsai/1741/blob/main/schemas/municipality.schema.json",
+  "title": "Municipality",
+  "description": "基礎自治体マスターの1レコード。コード体系は混同せず別フィールドで保持する。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "municipality_id",
+    "name",
+    "prefecture_name",
+    "municipality_type",
+    "record_status",
+    "as_of_date",
+    "source_ids"
+  ],
+  "properties": {
+    "municipality_id": {
+      "type": "string",
+      "pattern": "^[0-9]{6}$",
+      "description": "全国地方公共団体コード（検査数字を含む6桁）。"
+    },
+    "standard_area_code": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^([0-9]{5})?$",
+      "description": "e-Stat標準地域コード（5桁）。全国地方公共団体コードとは別物。"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prefecture_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "municipality_type": {
+      "type": "string",
+      "enum": [
+        "city",
+        "town",
+        "village",
+        "special_ward"
+      ]
+    },
+    "official_site_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "official_site_status": {
+      "type": "string",
+      "enum": [
+        "uncollected",
+        "candidate",
+        "verified",
+        "unavailable",
+        "needs_review"
+      ]
+    },
+    "record_status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "abolished",
+        "pending",
+        "needs_review"
+      ]
+    },
+    "valid_from": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "valid_to": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "as_of_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "source_urls": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "uniqueItems": true
+    },
+    "retrieved_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}
