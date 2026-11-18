@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bonsai/1919/blob/main/schemas/observation.schema.json",
+  "title": "Observation",
+  "description": "地域・指標・期間に対する観測値。出典と取得状態を必ず記録する。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["observation_id","region_id","indicator_id","value","unit","period","as_of_date","source_ids","verification_status"],
+  "properties": {
+    "observation_id": {"type":"string"},
+    "region_id": {"type":"string"},
+    "indicator_id": {"type":"string"},
+    "value": {"type":["number","integer","string","null"]},
+    "numerator": {"type":["number","integer","null"]},
+    "denominator": {"type":["number","integer","null"]},
+    "unit": {"type":"string"},
+    "period": {"type":"string","description":"年、年度、基準日、または期間。"},
+    "as_of_date": {"type":"string","format":"date"},
+    "source_ids": {"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true},
+    "source_urls": {"type":"array","items":{"type":"string","format":"uri"}},
+    "verification_status": {"enum":["unverified","verified","estimated","not_available","needs_review"]},
+    "method_note": {"type":["string","null"]},
+    "retrieved_at": {"type":["string","null"],"format":"date"}
+  }
+}
