@@ -10,7 +10,7 @@
 - 都道府県、基礎自治体、政令指定都市の行政区を別の階層として扱う。
 - 初期対象は市・町・村・東京都の特別区。政令指定都市の行政区、郡、支庁・振興局、一部事務組合は基礎自治体マスターに混ぜない。
 - 北方四島の6村は公的コード資料に掲載されるが、現行の行政サービス窓口としての実態とは異なる。除外せず、別途 `operational_status` 等で区別できるようにする。
-- 「1741」はリポジトリ名であり、自治体件数を固定する制約ではない。基準日ごとの公的資料から件数を算出する。
+- 「1919」はリポジトリ名であり、自治体件数を固定する制約ではない。基準日ごとの公的資料から件数を算出する。
 
 ## コード体系
 
@@ -112,7 +112,6 @@ UNESCO無形文化遺産、国指定重要無形民俗文化財、都道府県�
 - J-LIS 全国自治体マップ検索: https://www.j-lis.go.jp/spd/map-search/cms_1069.html
 - 文部科学省 社会教育統計（社会教育調査）: https://www.mext.go.jp/a_menu/shotou/gakuryoku-chousa/sonota/1346652.htm
 - 文化庁 文化遺産データベース: https://online.bunka.go.jp/db/
-- 文化庁 文化財保存活用地域計画: https://www.bunka.go.jp/seisaku/bunkazai/bunkazai_hozon/
 - 総務省 住民基本台帳に基づく人口、人口動態及び世帯数調査: https://www.e-stat.go.jp/stat-search/files?layout=dataset&stat_infid=000040479057
 - 厚生労働省 人口動態調査: https://www.e-stat.go.jp/stat-search/database?stat_infid=0003411627
 - 厚生労働省 人口動態保健所・市区町村別統計: https://www.mhlw.go.jp/toukei/list/81-1a.html
