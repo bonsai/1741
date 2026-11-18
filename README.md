@@ -22,20 +22,28 @@
 - `data/cultural_resources.jsonl`: 民謡・民舞・祭り・伝統行事等の文化資源
 - `data/cultural_relations.jsonl`: 主体・文化資源・地域の多対多関係と役割
 - `data/cultural_activities.jsonl`: 保存・継承・教育・公演・観光・発信等の活動
-- `assessments/cultural_assessments.jsonl`: 根拠に基づく文化関連の評価記録（初期状態は空）
+- `assessments/cultural_assessments.jsonl`: 文化資源・主体・活動の評価記録（初期状態は空）
+- `assessments/policy_assessments.jsonl`: 行政主体の文化政策・事業評価記録（初期状態は空）
 - `sources/sources.jsonl`: データソース台帳
 - `schemas/municipality.schema.json`: 自治体レコードのJSON Schema
 - `schemas/stakeholder.schema.json`: ステークホルダーのJSON Schema
 - `schemas/cultural_resource.schema.json`: 文化資源のJSON Schema
 - `schemas/cultural_relation.schema.json`: 主体・資源・地域の関係のJSON Schema
 - `schemas/cultural_activity.schema.json`: 文化活動のJSON Schema
-- `schemas/cultural_assessment.schema.json`: 文化関連評価記録のJSON Schema
+- `schemas/cultural_assessment.schema.json`: 文化資源・主体・活動の評価記録スキーマ
+- `schemas/policy_assessment.schema.json`: 文化行政評価記録のJSON Schema
 - `schemas/indicator.schema.json`: 評価・分析指標の定義スキーマ
 - `schemas/observation.schema.json`: 地域ごとの観測値スキーマ
 - `indicators/indicators.jsonl`: 実践編の統計・地域指標カタログ
 - `indicators/cultural_indicators.jsonl`: 文化エコシステムの評価軸カタログ
+- `indicators/cultural_administration_indicators.jsonl`: 文化行政の評価軸カタログ
+- `frameworks/cultural_administration.md`: 文化行政評価フレームワーク
 - `observations/observations.jsonl`: 収集した統計観測値（初期状態は空）
 - `research/methodology.md`: 母集団・コード・履歴・文化エコシステム・指標分析の扱い
+
+## 文化行政評価基盤
+
+1919は地域文化エコシステムの記録を土台に、文化行政の政策・投入・実施・到達・成果を検証する評価基盤を目指す。文化行政のガバナンス、予算・人材、保存継承、文化参加・アクセス、創造・発表、観光・地域経済、デジタル記録、多主体協働、政策評価・改善を評価領域とする。行政の寄与と地域主体の活動を区別し、未確認をゼロ点にせず、地域条件と出典・対象期間・評価方法を明示する。詳細は frameworks/cultural_administration.md を参照。
 
 ## 文化エコシステムの設計
 
@@ -78,6 +86,8 @@ e-Statの市区町村検索で使われる標準地域コードは5桁です。�
 初期指標はすべて候補（candidate）であり、実データ取得・定義照合・検証を経て有効化する。
 
 ## devhistory
+
+- **2026-11-19**: 1919を文化行政評価基盤として位置付け、ガバナンス、予算・人材、保存継承、文化参加・アクセス、創造・発表、観光・地域経済、デジタル化、多主体協働、政策評価・改善の評価フレームワークと指標候補を追加。行政の投入・活動・産出・成果・長期的影響を分け、行政の寄与と地域主体の活動を区別する。
 
 - **2026-11-19**: 文化資源を自治体に従属させない多主体モデルを追加。文化資源、ステークホルダー、関係、活動を独立管理し、自治体を多様な主体の一つとして位置付けた。文化評価軸に保存・継承、公的支援、観光活用、展開・発信等を追加。
 - **2026-11-19**: 実践編の初期4テーマ（図書館、地域文化、外国籍住民比率、出生動態）を定義。指標カタログと観測値を分離し、指標・観測値のJSON Schemaを追加。
