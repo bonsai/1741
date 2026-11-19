@@ -25,23 +25,23 @@
 - `assessments/cultural_assessments.jsonl`: 文化資源・主体・活動の評価記録（初期状態は空）
 - `assessments/policy_assessments.jsonl`: 行政主体の文化政策・事業評価記録（初期状態は空）
 - `sources/sources.jsonl`: データソース台帳
-- `schemas/municipality.schema.json`: 自治体レコードのJSON Schema
-- `schemas/stakeholder.schema.json`: ステークホルダーのJSON Schema
-- `schemas/cultural_resource.schema.json`: 文化資源のJSON Schema
-- `schemas/cultural_relation.schema.json`: 主体・資源・地域の関係のJSON Schema
-- `schemas/cultural_activity.schema.json`: 文化活動のJSON Schema
-- `schemas/cultural_assessment.schema.json`: 文化資源・主体・活動の評価記録スキーマ
-- `schemas/policy_assessment.schema.json`: 文化行政評価記録のJSON Schema
-- `schemas/indicator.schema.json`: 評価・分析指標の定義スキーマ
-- `schemas/observation.schema.json`: 地域ごとの観測値スキーマ
-- `indicators/indicators.jsonl`: 実践編の統計・地域指標カタログ
-- `indicators/cultural_indicators.jsonl`: 文化エコシステムの評価軸カタログ
-- `indicators/cultural_administration_indicators.jsonl`: 文化行政の評価軸カタログ
-- `frameworks/cultural_administration.md`: 文化行政評価フレームワーク
-- `frameworks/cultural_entity_model.md`: 曲・団体・イベント・委員会等のID付きエンティティモデル
-- `visualizations/cultural-ecosystem.md`: 文化エコシステムの可視化仕様
+- `schemas/`: 共通レコード・指標・観測値のJSON Schema
+- `indicators/`: 統計・地域指標、文化エコシステム、文化行政の評価軸カタログ
 - `observations/observations.jsonl`: 収集した統計観測値（初期状態は空）
+- `records/`: 自治体・文化資源・団体・イベント等の個別レコード
+- `frameworks/`: 評価フレームワークとエンティティモデル
 - `research/methodology.md`: 母集団・コード・履歴・文化エコシステム・指標分析の扱い
+
+## トピック別調査
+
+調査・分析テーマは `topics/{topic_id}/` ごとにディレクトリを分ける。トピック固有の定義、データソース、Python収集・加工コード、ノートブック、分析結果をまとめ、共通データ基盤は複製せず参照する。
+
+- `topics/library/`: 公共図書館。図書館費・資料費ランキング、施設・利用実績、和歌山市の重点調査
+- `topics/cultural-ecosystem/`: 地域文化エコシステム
+- `topics/foreign-residents/`: 外国籍住民
+- `topics/birth-dynamics/`: 出生動態
+
+各トピックの標準構成と運用方針は `topics/README.md` を参照。
 
 ## 個別レコード（Markdown先行運用）
 
@@ -108,10 +108,10 @@ e-Statの市区町村検索で使われる標準地域コードは5桁です。�
 
 ## devhistory
 
+- **2026-11-19**: 調査テーマごとのディレクトリ構成 `topics/{topic_id}/` を導入。公共図書館、地域文化エコシステム、外国籍住民、出生動態の4トピックを独立させ、トピック固有の収集・分析資産と共通データ基盤を分離。
 - **2026-11-19**: 曲・団体・実行委員会・イベント・個人・場所・活動を独立IDで管理するエンティティモデルと可視化仕様を追加。新民謡・Neo民謡・翻案を分類し、団体・イベント・曲の多対多関係と派生関係を表現可能にした。
 - **2026-11-19**: 個別レコードをID単位のフォルダで管理するMarkdown先行運用を追加。熊本県・熊本市を別自治体レコードとして、おてもやんを独立文化資源として初期登録。サーベイとギャル語翻案を個別ファイルに分離。
 - **2026-11-19**: 1919を文化行政評価基盤として位置付け、ガバナンス、予算・人材、保存継承、文化参加・アクセス、創造・発表、観光・地域経済、デジタル化、多主体協働、政策評価・改善の評価フレームワークと指標候補を追加。行政の投入・活動・産出・成果・長期的影響を分け、行政の寄与と地域主体の活動を区別する。
-
 - **2026-11-19**: 文化資源を自治体に従属させない多主体モデルを追加。文化資源、ステークホルダー、関係、活動を独立管理し、自治体を多様な主体の一つとして位置付けた。文化評価軸に保存・継承、公的支援、観光活用、展開・発信等を追加。
 - **2026-11-19**: 実践編の初期4テーマ（図書館、地域文化、外国籍住民比率、出生動態）を定義。指標カタログと観測値を分離し、指標・観測値のJSON Schemaを追加。
 - **2026-11-19**: プロジェクト名を **1741** から **1919** へ変更。基礎自治体だけでなく、政令指定都市の行政区や郡・支庁なども含めた地域情報を網羅的に収集し、評価可能なデータ基盤へ拡張する方針を明確化。登録対象の網羅性と、評価対象・評価単位の設計は分けて管理する。
